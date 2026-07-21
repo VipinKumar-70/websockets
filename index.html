@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>web socket server demo</h1>
+  </body>
+  <script>
+    const { port } = window.location;
+    const connection = new WebSocket(`ws://localhost:${port}`);
+    connection.onopen = () => {
+      connection.send("ping hello frm the client...");
+    };
+  </script>
+</html>
