@@ -18,8 +18,13 @@ wsServer.on("connection", (websocket) => {
 
   websocket.on("message", (data) => {
     console.log("websocket message rec. ", data.toString());
+    // data not broadcast here
+    // websocket.send(data.toString());
 
-    websocket.send("pong.... hello from the server");
+    // to broadcast data
+    wsServer.clients.forEach((client) => {
+      client.send(data.toString());
+    });
   });
 });
 
